@@ -9,13 +9,13 @@ The main packages required to run the code are:
 3. `scikit-learn`
 4. `torchtext`
 5. `gensim`
-6. `transformers``
+6. `transformers`
 
 You can install these packages by running the following command: `pip install -r requirements.txt`
 
-# Train and predict
+# Predict
 
-The main goal of the project WAS to predict how fit each candidate for the position of 'aspiring human resources' based on their job title. In practice, the fit score can be seen as the vector distance between the vector embedding of the job description of a candidate and the vector embedding of the job position offered. So, the fitting here consists of two steps:
+The main goal of the project was to predict how fit each candidate for the position of 'aspiring human resources' based on their job title. In practice, the fit score can be seen as the vector distance between the vector embedding of the job description of a candidate and the vector embedding of the job position offered. So, the fitting here consists of two steps:
 
 1. Get the embedding of the job title of each candidate, and the embedding of the description of the position offered. I will retrieve the embeddings from a different models:
   - Continuous Bag of Words
