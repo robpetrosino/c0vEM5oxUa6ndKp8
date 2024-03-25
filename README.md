@@ -4,12 +4,9 @@ This repository contains the code for a machine learning model that is trained o
 
 The main packages required to run the code are:
 
-1. `pandas`, `numpy`, and `math`
-2. `nltk` (and sublibraries therein)
-3. `scikit-learn`
-4. `torchtext`
-5. `gensim`
-6. `transformers`
+1. `pandas` and `numpy`(for data-wrangling)
+2. `scikit-learn` (for fit scoring)
+3. `torchtext` and `transformers` (for embedding calculation)
 
 You can install these packages by running the following command: `pip install -r requirements.txt`
 
@@ -17,20 +14,13 @@ You can install these packages by running the following command: `pip install -r
 
 The main goal of the project was to predict how fit each candidate for the position of 'aspiring human resources' based on their job title. In practice, the fit score can be seen as the vector distance between the vector embedding of the job description of a candidate and the vector embedding of the job position offered. So, the fitting here consists of two steps:
 
-1. Get the embedding of the job title of each candidate, and the embedding of the description of the position offered. I will retrieve the embeddings from a different models:
-  - Continuous Bag of Words
-  - TF-IDF (pre-trained)
-  - Word2Vec (pre-trained)
-  - FastText (pre-trained)
-  - BERT/SBERT (pre-trained)
-2. Calculate the distance between the two vectors. For this project, I will use cosine similarity (rather than Euclidean distance). 
+1. Get the embedding of the job title of each candidate, and the embedding of the description of the position offered. I will retrieve the embeddings from SBERT, as per its well-known high accuracy.
+2. Calculate the distance between the two vectors. For this project, I will use cosine similarity. 
 
-Apart from minimal differences embedding methods, the models seem to behave quite similarly. In absence of an objective evaluation method, the above was merely explorative.
+In the notebook, I also show how different models (i.e., CBOW, TF-IDF, GloVe, Word2Vec, fastText, BERT) can equally work.
 
-An additional goal of the project was to re-rank candidates, so that a specific subset of candidates are moved to the first positions regardless of their fit score. Here I show two ways to do this. 
+An additional goal of the project was to re-rank candidates, so that a specific subset of candidates are moved to the first positions regardless of their fit score. Here I implement the most intuitive way to do this: i.e., by adding the exact job title of the selected candidate(s) to the keywords to calculate the similarity of the title embeddings to. 
 
-1. Add the job title of the selected candidate(s) to the keywords
-2. Calculate the average of the embeddings of the job title of the selected candidates(s) and of the pre-set keywords.
 
 # Conclusion
 
